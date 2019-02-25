@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "rate.provider.lb.url",
+  "type": "java.lang.String",
+  "description": "URL for LB rate provider"
+}]}

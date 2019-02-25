@@ -1,0 +1,9 @@
+logging:
+  level:
+    lt:
+      js: ERROR
+        
+rate:
+  provider:
+    lb:
+      url: http://www.lb.lt/webservices/ExchangeRates/ExchangeRates.asmx/getExchangeRatesByDate

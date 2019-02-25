@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Get currency changes</title>
+
+    <script type="text/javascript" src="lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#getChangesButton").click(function () {
+                var forDate = $('#forDate').val();
+                var url = 'changes?forDate=' + forDate;
+                $.getJSON(url, function (data) {
+                    var items = [];
+                    $.each( data, function( idx, change ) {
+                        items.push( "<tr><td>" + change.currency + "</td><td>" + change.changeRatio + "</td><td>" + change.message + "</td></tr>" );
+                    });
+                    $("#changesData").html(items.join( "" ));
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    $("#changesData").html(JSON.parse(jqXHR.responseText).message);
+                });
+            });
+        });
+
+    </script>
+
+    <style type="text/css">
+        .center{
+            text-align: left;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <input type="date" id="forDate" value="">
+    <button id="getChangesButton">Get currency changes</button>
+    <table id="changesData" style="display: block;margin-top: 30px"></table>
+</div>
+</body>
+</html>
