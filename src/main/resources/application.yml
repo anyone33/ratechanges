@@ -1,7 +1,7 @@
 logging:
   level:
     lt:
-      js: ERROR
+      js: WARN
         
 rate:
   provider:
